@@ -200,14 +200,16 @@
   padding: 10px 0;
   border-radius: 5px;
   font-weight: 600;
+  cursor: pointer;
   &:hover {
     background-color: $secondary_color;
   }
 }
 
 .productDetail {
-  margin: 180px auto 20px;
-  width: 500px;
+  margin: 180px auto 90px;
+  min-width: 500px;
+  max-width: 800px;
   @include flexColumn;
   justify-content: space-between;
   border: 1px solid $ternary_color;
@@ -224,6 +226,68 @@
       @include flexColumn;
       gap: 10px;
     }
+  }
+}
+
+.cartView {
+  @include grid-places;
+  margin-top: 40px;
+}
+
+.table {
+  width: 700px;
+  margin: 30px auto;
+  border-radius: 10px;
+}
+
+.head {
+  background-color: $primary_color;
+  color: $text_color;
+  text-align: center;
+  th {
+    padding: 10px;
+    font-weight: 600;
+  }
+}
+
+.bold {
+  text-align: center;
+  font-weight: 600;
+}
+
+.lineBlock {
+  @include flexCenter;
+  gap: 20px;
+  margin-top: 20px;
+  width: 80%;
+}
+
+.inLine {
+  @include flexCenter;
+  gap: 20px;
+  button {
+    outline: none;
+    border: none;
+    cursor: pointer;
+  }
+}
+
+.fila {
+  padding: 10px;
+  background: rgba(227, 194, 254, 0.5);
+}
+
+.space {
+  padding: 5px 10px;
+  text-align: center;
+}
+
+.trash {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  &:hover {
+    color: $ternary_color;
   }
 }
 

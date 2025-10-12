@@ -1,9 +1,9 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
-import Carrito from "./components/Carrito";
+import Cart from "./components/Cart";
 import ProductDetailContainer from "./components/ProductDetailContainer";
-import Contacto from "./components/Contacto";
+import Contact from "./components/Contact";
 import ErrorPage from "./components/ErrorPage";
 import Footer from "./components/Footer";
 
@@ -13,9 +13,9 @@ function App() {
       <Navbar />
       <Routes>
         <Route path={"/"} element={<Home />} />
-        <Route path={"/carrito"} element={<Carrito />} />
+        <Route path={"/carrito"} element={<Cart />} />
         <Route path="/productDetail/:id" element={<ProductDetailContainer />} />
-        <Route path={"/contacto"} element={<Contacto />} />
+        <Route path={"/contacto"} element={<Contact />} />
         <Route path={"*"} element={<ErrorPage />} />
       </Routes>
       <Footer />

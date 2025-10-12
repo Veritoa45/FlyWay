@@ -40,7 +40,7 @@ const Contacto = () => {
   };
 
   return (
-    <div className="form">
+    <section className="form">
       <h2>Dejanos tu consulta</h2>
       <form
         ref={form}
@@ -107,7 +107,7 @@ const Contacto = () => {
         </button>
       </form>
       <ToastContainer position="top-right" autoClose={3000} />
-    </div>
+    </section>
   );
 };
 

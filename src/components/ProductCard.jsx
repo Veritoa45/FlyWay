@@ -1,20 +1,18 @@
 import Button from "./Button";
 
-const ProductCard = ({ prod }) => {
-  const { destino, imagen, descripcion, id } = prod;
-
+const ProductCard = ({ product }) => {
   return (
     <div className="productoCard">
       <img
-        src={imagen}
+        src={product.imagen}
         className="productoImage"
-        alt={destino}
+        alt={product.destino}
         data-lazy-load
       />
       <div className="overlay">
-        <h2>{destino}</h2>
-        <p>{descripcion}</p>
-        <Button to={`/productDetail/${id}`} text="Ver detalle" />
+        <h2>{product.destino}</h2>
+        <p>{product.descripcion}</p>
+        <Button to={`/products/${product.id}`} text="Ver detalle" />
       </div>
     </div>
   );

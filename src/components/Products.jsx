@@ -1,25 +1,32 @@
 import { useState, useEffect } from "react";
 import ProductContainer from "./ProductContainer.jsx";
 import Loader from "./Loader.jsx";
-import { getAllDestinations } from "../mock/AsyncMock";
+import { getDestinos } from "../services/api";
 
 const Products = () => {
-  const [destinos, setDestinos] = useState([]);
+  const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     setLoading(true);
-    getAllDestinations()
+    getDestinos()
       .then((res) => {
-        setDestinos(res);
+        setProducts(res);
       })
-      .catch((error) => console.error("Error fetching destinations:", error))
+      .catch((err) => {
+        console.error("Error fetching products:", err);
+        setError("No se pudieron cargar los productos");
+      })
       .finally(() => setLoading(false));
   }, []);
 
+  if (loading) return <Loader />;
+  if (error) return <p className="text-danger">{error}</p>;
+
   return (
     <section>
-      {loading ? <Loader /> : <ProductContainer destinos={destinos} />}
+      <ProductContainer products={products} />
     </section>
   );
 };

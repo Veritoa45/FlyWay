@@ -1,7 +1,10 @@
 import { NavLink } from "react-router-dom";
 import Logo from "../../public/Logo.png";
+import { useAuth } from "../context/AuthContext";
 
 const NavbarMenu = () => {
+  const { user, logout } = useAuth();
+
   return (
     <nav className="navContainer">
       <NavLink to="/" className="logo">
@@ -32,6 +35,30 @@ const NavbarMenu = () => {
         >
           Contacto{" "}
         </NavLink>
+        {user?.role === "admin" && (
+          <NavLink
+            to="/products/new"
+            className={({ isActive }) =>
+              isActive ? "navItem active" : "navItem"
+            }
+          >
+            Nuevo producto
+          </NavLink>
+        )}
+        {user ? (
+          <button onClick={logout} className="navItem">
+            Logout
+          </button>
+        ) : (
+          <NavLink
+            to="/login"
+            className={({ isActive }) =>
+              isActive ? "navItem active" : "navItem"
+            }
+          >
+            Login
+          </NavLink>
+        )}
       </div>
     </nav>
   );

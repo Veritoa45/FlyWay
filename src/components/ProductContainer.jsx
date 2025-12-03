@@ -1,12 +1,12 @@
 import ProductCard from "./ProductCard.jsx";
 
-const ProductContainer = ({ destinos }) => {
+const ProductContainer = ({ products }) => {
   return (
     <div className="container">
       <h1 className="sectionTitle">Destinos</h1>
       <div className="productosGrid">
-        {destinos.map((des) => (
-          <ProductCard key={des.id} prod={des} />
+        {products.map((product) => (
+          <ProductCard key={product.id} product={product} />
         ))}
       </div>
     </div>

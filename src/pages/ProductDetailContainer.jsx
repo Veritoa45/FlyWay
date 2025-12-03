@@ -1,22 +1,22 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getDestinationById } from "../mock/AsyncMock";
-import ProductDetail from "./ProductDetail";
-import NoExistProduct from "./NoExistProduct";
-import Loader from "./Loader";
+import { getDestino } from "../services/api";
+import ProductDetail from "../components/ProductDetail";
+import NoExistProduct from "../components/NoExistProduct";
+import Loader from "../components/Loader";
 
 const ProductDetailContainer = () => {
   const { id } = useParams();
-  const [destino, setDestino] = useState(null);
+  const [product, setProduct] = useState(null);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     setLoading(true);
-    getDestinationById(id)
-      .then((d) => {
-        if (d) {
-          setDestino(d);
+    getDestino(id)
+      .then((p) => {
+        if (p) {
+          setProduct(p);
           setError(false);
         } else {
           setError(true);
@@ -31,7 +31,7 @@ const ProductDetailContainer = () => {
       {loading ? (
         <Loader />
       ) : !error ? (
-        <ProductDetail destino={destino} />
+        <ProductDetail product={product} />
       ) : (
         <NoExistProduct />
       )}

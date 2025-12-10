@@ -2,6 +2,7 @@ import CartItem from "./CartItem";
 import EmptyCart from "./EmptyCart";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Swal from "sweetalert2";
 
 const CartView = ({
   cart = [],
@@ -10,7 +11,11 @@ const CartView = ({
   totalPrice,
   removeItem,
 }) => {
-  if (cart.length === 0) return <EmptyCart />;
+  console.log("CartView ejecutándose. clearCart =", clearCart);
+
+  if (cart.length === 0) {
+    return <EmptyCart />;
+  }
 
   const confirmClearCart = () => {
     toast.custom((t) => (
@@ -34,11 +39,22 @@ const CartView = ({
     ));
   };
 
-  if (cart.length === 0) return <p>Carrito vacío</p>;
+  const confirmarCompra = () => {
+    console.log("Terminar compra, clearCart =", clearCart);
+
+    Swal.fire({
+      title: "¡Compra realizada con éxito!",
+      text: "Gracias por elegir Flyway ✈️",
+      icon: "success",
+      confirmButtonText: "Aceptar",
+      confirmButtonColor: "#4caf50",
+    }).then(() => {
+      clearCart();
+    });
+  };
 
   return (
     <div className="cartView">
-      <h2>Tu carrito</h2>
       <table className="table">
         <thead className="head">
           <tr>
@@ -55,8 +71,8 @@ const CartView = ({
         <tfoot>
           <tr className="head">
             <th className="bold">Total</th>
-            <td className="bold">{totalItems()}</td>
-            <td className="bold">U$S {totalPrice()}</td>
+            <td className="bold">{totalItems}</td>
+            <td className="bold">U$S {totalPrice}</td>
           </tr>
         </tfoot>
       </table>
@@ -65,7 +81,9 @@ const CartView = ({
         <div onClick={confirmClearCart} className="button">
           Vaciar carrito
         </div>
-        <div className="button">Terminar compra</div>
+        <div onClick={confirmarCompra} className="button">
+          Terminar compra
+        </div>
       </div>
       <ToastContainer position="top-right" autoClose={3000} />
     </div>

@@ -1,5 +1,7 @@
 import { useCart } from "../context/CartContext";
 import Button from "./Button";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ProductDetail = ({ product }) => {
   const { addItem } = useCart();
@@ -28,6 +30,7 @@ const ProductDetail = ({ product }) => {
           <Button to="/" text="Volver" />
         </div>
       </div>
+      <ToastContainer position="top-right" autoClose={3000} />
     </div>
   );
 };

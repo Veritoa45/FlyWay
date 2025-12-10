@@ -2,7 +2,6 @@ import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { toast } from "react-toastify";
-import Button from "../components/Button";
 
 const LoginForm = () => {
   const { login } = useAuth();
@@ -12,6 +11,7 @@ const LoginForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log("Submit ejecutado con:", email, password);
 
     if (!email.trim() || !password.trim()) {
       toast.error("Completa todos los campos");
@@ -52,7 +52,7 @@ const LoginForm = () => {
           required
         />
       </div>
-      <Button text={"Ingresar"} />
+      <button className="button2">Ingresar</button>
     </form>
   );
 };

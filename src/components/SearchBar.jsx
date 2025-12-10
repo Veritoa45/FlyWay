@@ -7,13 +7,16 @@ const SearchBar = ({ onChange }) => {
     return () => clearTimeout(id);
   }, [value, onChange]);
   return (
-    <input
-      type="search"
-      placeholder="Buscar por nombre o categoría"
-      aria-label="Buscar productos"
-      value={value}
-      onChange={(e) => setValue(e.target.value)}
-    />
+    <div className="center">
+      <input
+        type="search"
+        placeholder="Buscar por nombre o categoría"
+        aria-label="Buscar productos"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        className="search"
+      />
+    </div>
   );
 };
 

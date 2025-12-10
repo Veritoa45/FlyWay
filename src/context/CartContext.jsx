@@ -13,20 +13,35 @@ export function CartProvider({ children }) {
     localStorage.setItem("flyway_cart", JSON.stringify(cart));
   }, [cart]);
 
+  const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+
+  const totalPrice = cart.reduce(
+    (total, item) => total + item.precio * item.quantity,
+    0
+  );
+
   const addItem = (destino) => {
+    let message = "";
+
     setCart((prev) => {
       const existing = prev.find((item) => item.id === destino.id);
       if (existing) {
-        toast.info(`Cantidad de ${destino.destino} actualizada`);
+        message = `Cantidad de ${destino.destino} actualizada`;
         return prev.map((item) =>
           item.id === destino.id
             ? { ...item, quantity: item.quantity + 1 }
             : item
         );
       }
-      toast.success(`${destino.destino} agregado al carrito ✅`);
+      message = `${destino.destino} agregado al carrito ✅`;
       return [...prev, { ...destino, quantity: 1 }];
     });
+
+    if (message.includes("actualizada")) {
+      toast.info(message);
+    } else {
+      toast.success(message);
+    }
   };
 
   const removeItem = (id) => {
@@ -34,20 +49,18 @@ export function CartProvider({ children }) {
     toast.warn("Destino eliminado del carrito");
   };
 
-  const clear = () => {
-    setCart([]);
-    toast.error("Carrito vaciado");
-  };
-
-  const totalItems = () =>
-    cart.reduce((total, item) => total + item.quantity, 0);
-
-  const totalPrice = () =>
-    cart.reduce((total, item) => total + item.precio * item.quantity, 0);
+  const clearCart = () => setCart([]);
 
   return (
     <CartContext.Provider
-      value={{ cart, addItem, removeItem, clear, totalItems, totalPrice }}
+      value={{
+        cart,
+        addItem,
+        removeItem,
+        clearCart,
+        totalItems,
+        totalPrice,
+      }}
     >
       {children}
     </CartContext.Provider>

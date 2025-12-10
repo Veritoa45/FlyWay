@@ -2,12 +2,14 @@ import { Link } from "react-router-dom";
 
 const EmptyCart = () => {
   return (
-    <div className="emptyCart">
+    <div className="container">
       <h2>Tu carrito está vacío</h2>
-      {/* <img src="/emptyCart.png" alt="Carrito Vacío" />
-      <Link to={"/"} className="btn">
+      <div className="emptyCart">
+        <img src="/emptyCart.png" alt="Carrito Vacío" />
+      </div>
+      <Link to={"/"} className="button">
         Agregar productos
-      </Link> */}
+      </Link>
     </div>
   );
 };

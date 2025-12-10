@@ -24,3 +24,68 @@
   display: grid;
   place-items: center;
 }
+
+@mixin button {
+  display: block;
+  margin: 0 auto;
+  text-decoration: none;
+  background-color: $primary_color;
+  width: 150px;
+  text-align: center;
+  padding: 10px 0;
+  border-radius: 5px;
+  font-weight: 600;
+  cursor: pointer;
+  &:hover {
+    background-color: $secondary_color;
+  }
+}
+
+@mixin formContent {
+  @include flexColumn;
+  gap: 20px;
+  width: 90%;
+  margin: 30px auto;
+  input {
+    display: block;
+    width: 90%;
+    margin: 0 auto;
+    padding: 15px 20px;
+    border: none;
+    border-bottom: 2px solid $secondary_color;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    color: $text_color;
+    &:focus {
+      outline: none;
+      border-bottom: 2px solid $ternary_color;
+      transform: translateY(-2px);
+      border-radius: 10px;
+    }
+  }
+  .formGroup {
+    width: 90%;
+    label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: $text_color;
+      font-size: 1rem;
+    }
+    textarea {
+      width: 100%;
+      padding: 15px 20px;
+      border: 2px solid $secondary_color;
+      border-radius: 10px;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      color: $text_color;
+      &:focus {
+        outline: none;
+        border: 2px solid $ternary_color;
+        transform: translateY(-2px);
+        border-radius: 10px;
+      }
+    }
+  }
+}

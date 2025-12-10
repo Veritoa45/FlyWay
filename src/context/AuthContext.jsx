@@ -12,6 +12,8 @@ export function AuthProvider({ children }) {
   }, []);
 
   const login = (email, password) => {
+    console.log("Intentando login con:", email, password);
+
     const found = users.find(
       (u) => u.email === email && u.password === password
     );

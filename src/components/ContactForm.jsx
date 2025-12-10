@@ -4,7 +4,7 @@ import Swal from "sweetalert2";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const Contacto = () => {
+const ContactForm = () => {
   const form = useRef();
 
   const {
@@ -17,7 +17,7 @@ const Contacto = () => {
   useEffect(() => {
     if (errors.name) toast.error(errors.name.message);
     if (errors.phone) toast.error(errors.phone.message);
-    if (errors.mail) toast.error(errors.email.message);
+    if (errors.email) toast.error(errors.email.message);
     if (errors.messages) toast.error(errors.messages.message);
   }, [errors]);
 
@@ -40,8 +40,7 @@ const Contacto = () => {
   };
 
   return (
-    <section className="form">
-      <h2>Dejanos tu consulta</h2>
+    <>
       <form
         ref={form}
         onSubmit={handleSubmit(sendEmail)}
@@ -107,8 +106,8 @@ const Contacto = () => {
         </button>
       </form>
       <ToastContainer position="top-right" autoClose={3000} />
-    </section>
+    </>
   );
 };
 
-export default Contacto;
+export default ContactForm;

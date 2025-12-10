@@ -36,14 +36,24 @@ const NavbarMenu = () => {
           Contacto{" "}
         </NavLink>
         {user?.role === "admin" && (
-          <NavLink
-            to="/products/new"
-            className={({ isActive }) =>
-              isActive ? "navItem active" : "navItem"
-            }
-          >
-            Nuevo producto
-          </NavLink>
+          <>
+            <NavLink
+              to="/products/new"
+              className={({ isActive }) =>
+                isActive ? "navItem active" : "navItem"
+              }
+            >
+              Agregar producto
+            </NavLink>
+            <NavLink
+              to="/products/productList"
+              className={({ isActive }) =>
+                isActive ? "navItem active" : "navItem"
+              }
+            >
+              Modificar producto
+            </NavLink>
+          </>
         )}
         {user ? (
           <button onClick={logout} className="navItem">

@@ -122,6 +122,10 @@
   max-width: 1200px;
   margin: 170px auto 100px;
   padding: 0 20px;
+  h2 {
+    text-align: center;
+    font-size: $h2D;
+  }
   .sectionTitle {
     text-align: center;
     margin-bottom: 20px;
@@ -133,6 +137,45 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
+  }
+  .formContent {
+    @include formContent;
+  }
+}
+
+.productTable {
+  @include grid-places;
+  margin-top: 40px;
+}
+
+.buttonProduct {
+  cursor: pointer;
+  border: none;
+  margin-left: 10px;
+  &:hover {
+    background-color: $ternary_color;
+  }
+}
+
+.pagination {
+  @include flexCenter;
+  gap: 10px;
+  margin: 20px auto;
+  button {
+    @include button;
+    border: none;
+  }
+}
+
+.center {
+  @include flexCenter;
+  margin: 20px auto;
+  .search {
+    width: 600px;
+    height: 30px;
+    border-radius: 10px;
+    padding: 5px;
+    outline: none;
   }
 }
 
@@ -167,6 +210,15 @@
         }
       }
     }
+  }
+}
+
+.emptyCart {
+  width: 500px;
+  height: auto;
+  margin: 20px auto;
+  img {
+    width: 100%;
   }
 }
 
@@ -227,19 +279,12 @@
 }
 
 .button {
-  display: block;
-  margin: 0 auto;
-  text-decoration: none;
-  background-color: $primary_color;
-  width: 150px;
-  text-align: center;
-  padding: 10px 0;
-  border-radius: 5px;
-  font-weight: 600;
-  cursor: pointer;
-  &:hover {
-    background-color: $secondary_color;
-  }
+  @include button;
+}
+
+.button2 {
+  @include button;
+  border: none;
 }
 
 .productDetail {
@@ -387,6 +432,12 @@
     border: none;
     cursor: pointer;
   }
+}
+
+.imagen-tabla {
+  width: 100px;
+  height: 80px;
+  border-radius: 5px;
 }
 
 .footer {
